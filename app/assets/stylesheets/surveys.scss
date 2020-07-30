@@ -1,3 +1,22 @@
 // Place all the styles related to the surveys controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body{
+  font-size: 1.5em;
+  line-height: 2em;
+}
+
+input[type=number], input[type=text] {
+  font-size: 1em;
+  padding: .25em;
+  text-align: center;
+}
+
+input[type=text] {
+  text-align: left;
+  width: 100%;
+}
+
+#occupants-number {
+  width: 3em;
+}
