@@ -17,6 +17,32 @@ input[type=text] {
   width: 100%;
 }
 
+input[type=submit] {
+  padding: 0.5em;
+  font-size: 1em;
+}
+
 #occupants-number {
   width: 3em;
+}
+
+.details {
+  margin-left: 1em;
+  padding: .5em;
+  background: #eee;
+}
+
+
+ol#housemates {
+  list-style: none;
+  padding: 0;
+  counter-reset: housemate-counter;
+  margin-bottom: 2em;
+}
+ol#housemates li {
+  counter-increment: housemate-counter;
+  margin: 0;
+}
+ol#housemates li::before {
+  content: "Person " counter(housemate-counter) ;
 }

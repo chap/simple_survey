@@ -1,20 +1,17 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "slider", "number" ]
+  static targets = ["outside", "outsideDetails"]
 
   connect() {
-    // this.outputTarget.textContent = 'Hello, Stimulus!'
-    console.log("Opportunity Stimulus loaded")
+    console.log("Work Stimulus loaded")
   }
 
-  slide() {
-    let selectedValue = this.sliderTarget.value
-    this.numberTarget.value = selectedValue;
-  }
-
-  updateNumber() {
-    let selectedValue = this.numberTarget.value
-    this.sliderTarget.value = selectedValue;
+  outsideChange() {
+    if(this.outsideTarget.checked) {
+      this.outsideDetailsTarget.style.display = 'block';
+    } else {
+      this.outsideDetailsTarget.style.display = 'none';
+    }
   }
 }
