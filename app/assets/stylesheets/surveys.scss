@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 body{
-  font-size: 1.5em;
-  line-height: 2em;
+  font-size: 1.3em;
+  line-height: 1.5em;
 }
 
 input[type=number], input[type=text] {
@@ -27,7 +27,7 @@ input[type=submit] {
 }
 
 .details {
-  margin-left: 1em;
+  // margin-left: 1em;
   padding: .5em;
   background: #eee;
 }

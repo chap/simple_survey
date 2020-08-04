@@ -63,15 +63,20 @@
       activites outside the home:
       <div class="details" style="margin:0;margin-bottom:1em;">
         <label>
-          <input type="checkbox" data-action="work#outsideChange" data-target="work.outside"> work or attend school
+          <input type="checkbox" data-action="work#outsideChange" data-target="work.outside"> work or school
         </label>
         <label>
-          <input type="checkbox" data-action="work#outsideChange" data-target="work.outside"> shop or restauraunts
+          <input type="checkbox" data-action="work#outsideChange" data-target="work.outside"> shopping or eating out
         </label>
         <input type="text" placeholder="more details on this person">
       </div>
     </li>
   </template>
+
+  <div class="field">
+    <label>Any other details or special considerations for your household?</label>
+    <textarea name="name" rows="3" cols="80"></textarea>
+  </div>
 
   <div class="actions">
     <%= form.submit 'Save and Share', disabled: true %>
