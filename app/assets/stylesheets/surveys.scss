@@ -2,19 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 body{
-  font-size: 1.3em;
-  line-height: 1.5em;
+  font-size: 1.5em;
+  line-height: 1.8em;
 }
 
-input[type=number], input[type=text] {
+@media only screen and (max-width: 600px) {
+  body{
+    font-size: 1em;
+    line-height: 1.3em;
+  }
+}
+
+input[type=number], input[type=text], textarea {
   font-size: 1em;
   padding: .25em;
   text-align: center;
 }
 
-input[type=text] {
+input[type=text], textarea {
   text-align: left;
   width: 100%;
+}
+
+input[type=range] {
+  width: 50%;
 }
 
 input[type=submit] {
