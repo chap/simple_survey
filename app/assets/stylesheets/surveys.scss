@@ -22,10 +22,11 @@ input[type=number], input[type=text], textarea {
 input[type=text], textarea {
   text-align: left;
   width: 100%;
+  margin-bottom: 2em;
 }
 
 input[type=range] {
-  width: 50%;
+  width: 75%;
 }
 
 input[type=submit] {
@@ -48,7 +49,7 @@ ol#housemates {
   list-style: none;
   padding: 0;
   counter-reset: housemate-counter;
-  margin-bottom: 2em;
+
 }
 ol#housemates li {
   counter-increment: housemate-counter;
