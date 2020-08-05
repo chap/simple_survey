@@ -1,12 +1,3 @@
-// Visit The Stimulus Handbook for more details
-// https://stimulusjs.org/handbook/introduction
-//
-// This example controller works with specially annotated HTML like:
-//
-// <div data-controller="hello">
-//   <h1 data-target="hello.output"></h1>
-// </div>
-
 import { Controller } from "stimulus"
 
 export default class extends Controller {
@@ -37,13 +28,13 @@ export default class extends Controller {
       // need to drop
       do {
         list.removeChild(housemates[housemates.length-1]);
-        diff--
+        diff--;
       } while (diff > 0)
     } else if (diff < 0) {
       // need to add
       do {
-        this.insertHousemate()
-        diff++
+        this.insertHousemate();
+        diff++;
       } while (diff < 0)
     }
   }

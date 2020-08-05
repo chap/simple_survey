@@ -1,14 +1,3 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Token:</strong>
-  <%= @survey.token %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @survey.body %>
-</p>
-
-<%= link_to 'Edit', edit_survey_path(@survey) %> |
-<%= link_to 'Back', surveys_path %>
+<%= @survey.response %>

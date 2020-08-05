@@ -11,42 +11,47 @@
     </div>
   <% end %>
 
-  <div class="field" data-controller="work">
+  <div class="field" data-controller="activity">
     <label>
-      <input type="checkbox" data-action="work#outsideChange" data-target="work.outside"> I work or attend school outside my home
+      <%= form.check_box 'response[work][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
+      I work or attend school outside my home
     </label>
-    <div class="field details" data-target="work.outsideDetails" style="display:none;">
-      <label><input type="checkbox" value="mask" name="mask"> I wear a mask 100% of the time</label>
-      <input type="text" placeholder="optionally share more details here">
+    <div class="field details" data-target="activity.outsideDetails" style="display:none;">
+      <label>
+        <%= form.check_box 'response[work][mask]'%>
+        I wear a mask 100% of the time
+      </label>
+      <%= form.text_field 'response[work][comment]', placeholder: 'optionally share more details here' %>
     </div>
   </div>
 
-  <div class="field" data-controller="work">
+  <div class="field" data-controller="activity">
     <label>
-      <input type="checkbox" data-action="work#outsideChange" data-target="work.outside"> I shop inside at the grocery or other stores
+      <%= form.check_box 'response[shop][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
+      I shop inside at the grocery or other stores
     </label>
-    <div class="field details" data-target="work.outsideDetails" style="display:none;">
-      <label><input type="checkbox" value="mask" name="mask"> I wear a mask 100% of the time</label>
-      <input type="text" placeholder="optionally share more details here">
+    <div class="field details" data-target="activity.outsideDetails" style="display:none;">
+      <label>
+        <%= form.check_box 'response[shop][mask]'%>
+        <input type="checkbox" value="mask" name="mask"> I wear a mask 100% of the time
+      </label>
+      <%= form.text_field 'response[shop][comment]', placeholder: 'optionally share more details here' %>
     </div>
   </div>
 
-  <div class="field" data-controller="work">
+  <div class="field" data-controller="activity">
     <label>
-      <input type="checkbox" data-action="work#outsideChange" data-target="work.outside"> I eat at restauraunts
+      <%= form.check_box 'response[eat][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
+      I eat at restauraunts
     </label>
-    <div class="field details" data-target="work.outsideDetails" style="display:none;">
-      <label><input type="checkbox" value="mask" name="mask"> I wear a mask when away from my table</label>
-      <input type="text" placeholder="optionally share more details here">
+    <div class="field details" data-target="activity.outsideDetails" style="display:none;">
+      <label>
+        <%= form.check_box 'response[eat][mask]'%>
+        I wear a mask when away from my table
+      </label>
+      <%= form.text_field 'response[eat][comment]', placeholder: 'optionally share more details here' %>
     </div>
   </div>
-
-  <!-- <p><input type="checkbox"> Do you have allergies?</p>
-  <p><input type="checkbox"> Do you hang out with other people?</p>
-
-  <p><input type="checkbox"> Do you do curbside pickup?</p>
-
-  <p><input type="checkbox"> Do you go out in public places?</p> -->
 
 
   <div class="field" data-controller="occupants">
@@ -58,32 +63,37 @@
   <ol id="housemates">
   </ol>
 
-  <template id="housemateTemplate">
-    <li class="housemate">
-      activites outside the home:
-      <div class="details" style="margin:0;margin-bottom:1em;">
-        <label>
-          <input type="checkbox" data-action="work#outsideChange" data-target="work.outside"> work or school
-        </label>
-        <label>
-          <input type="checkbox" data-action="work#outsideChange" data-target="work.outside"> shopping or eating out
-        </label>
-        <input type="text" placeholder="more details on this person">
-      </div>
-    </li>
-  </template>
-
   <div class="field">
-    <label>Any other activities (dentist, stylist, etc) or special considerations for your household?</label>
+    <label>Any other testing, travel, activities or special considerations for your household?</label>
     <textarea name="name" rows="3" cols="80"></textarea>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Save and Share', disabled: true %>
+    <%= form.submit 'Save and Share' %>
   </div>
 
 
+<%
+  # hack to render household fields outside of form element
+  # otherwise template fields will get submitted with the form
+  @fform = form
 
+  # end form
+  end
+%>
 
-
-<% end %>
+<!-- keep outside form so it blank fields don't get submitted -->
+<template id="housemateTemplate">
+  <li class="housemate">
+    activites outside the home:
+    <div class="details" style="margin:0;margin-bottom:1em;">
+      <label>
+        <%= @fform.check_box 'body[housemates][][work_school]'%> work or school
+      </label>
+      <label>
+        <%= @fform.check_box 'body[housemates][][shop_eat]'%> shopping or eating out
+      </label>
+      <%= @fform.text_field 'body[housemates][][comment]', placeholder: 'more details on this person' %>
+    </div>
+  </li>
+</template>

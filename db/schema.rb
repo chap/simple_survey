@@ -13,9 +13,10 @@
 ActiveRecord::Schema.define(version: 2020_07_30_135511) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "surveys", force: :cascade do |t|
+  create_table "surveys", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "token"
     t.json "response"
     t.datetime "created_at", precision: 6, null: false
