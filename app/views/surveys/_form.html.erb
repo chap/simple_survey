@@ -1,25 +1,15 @@
 <%= form_with(model: survey, local: true) do |form| %>
-  <% if survey.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
 
-      <ul>
-        <% survey.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <h4>In the past 2 weeks (since <%= 2.weeks.ago.strftime("%B %d") %>) I have...</h4>
   <div class="field" data-controller="activity">
     <label>
       <%= form.check_box 'response[work][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
-      I work or attend school outside my home
+      worked or attend school outside my home
     </label>
     <div class="field details" data-target="activity.outsideDetails" style="display:none;">
       <label>
         <%= form.check_box 'response[work][mask]'%>
-        I wear a mask 100% of the time
+        I wore a mask 100% of the time
       </label>
       <%= form.text_field 'response[work][comment]', placeholder: 'optionally share more details here' %>
     </div>
@@ -28,12 +18,12 @@
   <div class="field" data-controller="activity">
     <label>
       <%= form.check_box 'response[shop][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
-      I shop inside at the grocery or other stores
+      shopped at the grocery or inside other stores
     </label>
     <div class="field details" data-target="activity.outsideDetails" style="display:none;">
       <label>
         <%= form.check_box 'response[shop][mask]'%>
-        <input type="checkbox" value="mask" name="mask"> I wear a mask 100% of the time
+        I wore a mask 100% of the time
       </label>
       <%= form.text_field 'response[shop][comment]', placeholder: 'optionally share more details here' %>
     </div>
@@ -42,12 +32,12 @@
   <div class="field" data-controller="activity">
     <label>
       <%= form.check_box 'response[eat][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
-      I eat at restauraunts
+      eaten at a restauraunt
     </label>
     <div class="field details" data-target="activity.outsideDetails" style="display:none;">
       <label>
         <%= form.check_box 'response[eat][mask]'%>
-        I wear a mask when away from my table
+        I wore a mask when away from my table
       </label>
       <%= form.text_field 'response[eat][comment]', placeholder: 'optionally share more details here' %>
     </div>
@@ -64,9 +54,11 @@
   </ol>
 
   <div class="field">
-    <label>Any other testing, travel, activities or special considerations for your household?</label>
-    <textarea name="name" rows="3" cols="80"></textarea>
+    <label>Other testing, travel, activities or considerations for your household?</label>
+    <%= form.text_area 'response[comment]', rows:3, cols:80 %>
   </div>
+
+  <%= form.hidden_field 'response[version]', value:'1' %>
 
   <div class="actions">
     <%= form.submit 'Save and Share' %>
@@ -85,15 +77,15 @@
 <!-- keep outside form so it blank fields don't get submitted -->
 <template id="housemateTemplate">
   <li class="housemate">
-    activites outside the home:
+    activites in the last 2 weeks:
     <div class="details" style="margin:0;margin-bottom:1em;">
       <label>
-        <%= @fform.check_box 'body[housemates][][work_school]'%> work or school
+        <%= @fform.check_box 'response[housemates][][work_school]'%> work or school outside the home
       </label>
       <label>
-        <%= @fform.check_box 'body[housemates][][shop_eat]'%> shopping or eating out
+        <%= @fform.check_box 'response[housemates][][shop_eat]'%> shopping or eating out
       </label>
-      <%= @fform.text_field 'body[housemates][][comment]', placeholder: 'more details on this person' %>
+      <%= @fform.text_field 'response[housemates][][comment]', placeholder: 'more details on this person' %>
     </div>
   </li>
 </template>

@@ -1,3 +1,78 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
-<%= @survey.response %>
+<%# @survey.response %>
+
+<h4>From <%= (@survey.created_at - 2.weeks).strftime("%B %d") %> &mdash; <%= @survey.created_at.strftime("%B %d") %>...</h4>
+
+<ul>
+  <li>
+    <% if @survey.response['work']['outside'] == '1' %>
+      I worked or attended school outside the home.
+      <% if @survey.response['work']['mask'] == '1' %>
+        I wore a mask 100% of the time.
+      <% end %>
+      <%= @survey.response['work']['comment'] if @survey.response['work']['comment'].present? %>
+    <% else %>
+      I did not work or attend school outside the home.
+    <% end %>
+  </li>
+
+  <li>
+    <% if @survey.response['shop']['outside'] == '1' %>
+      I shopped at the grocery or inside other stores.
+      <% if @survey.response['work']['mask'] == '1' %>
+        I wore a mask 100% of the time.
+      <% end %>
+      <%= @survey.response['shop']['comment'] if @survey.response['work']['comment'].present? %>
+    <% else %>
+      I did not shop at the grocery or inside other stores.
+    <% end %>
+  </li>
+
+  <li>
+    <% if @survey.response['eat']['outside'] == '1' %>
+      I ate at restauraunts.
+      <% if @survey.response['eat']['mask'] == '1' %>
+        I wore a mask when away from my table.
+      <% end %>
+      <%= @survey.response['eat']['comment'] %>
+    <% else %>
+      I did not eat at restauraunts.
+    <% end %>
+  </li>
+
+  <li>
+    I live with <%= pluralize(@survey.response['housemates'].count, 'person') %>.
+  </li>
+
+  <% (1..@survey.response['housemates'].count).to_a.each do |i| %>
+    <% housemate = @survey.response['housemates'][(i-1)] %>
+    <li>
+      The <%= i.ordinalize %>
+      <% if housemate['work_school'] == '1' %>
+        worked or attended school outside the home.
+      <% else %>
+        did not work or attend school outside the home.
+      <% end %>
+      They
+      <% if housemate['shop_eat'] == '1' %>
+        shopped or ate out.
+      <% else %>
+        did not shop or eat out.
+      <% end %>
+      <%= housemate['comment'] %>
+    </li>
+  <% end %>
+
+  <% if @survey.response['comment'].present? %>
+    <li>
+      <%= @survey.response['comment'] %>
+    </li>
+  <% end %>
+</ul>
+
+<p><small>
+  Submitted <%= time_ago_in_words(@survey.created_at) %> ago<br />
+  Permanent link: <%= link_to short_survey_url(@survey) %><br />
+  <%= link_to 'Submit new answers', root_url %>
+</small></p>

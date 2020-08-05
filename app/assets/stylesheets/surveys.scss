@@ -2,12 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-h3 {
+h1 {
   margin-bottom: 0;
   padding-bottom: 0;
+  font-size: 2em;
 }
 
-h4 {
+h2 {
   margin: 0;
   margin-bottom: 1em;
   padding: 0;
@@ -15,12 +16,16 @@ h4 {
   font-size: 1rem;
 }
 
+h4 {
+  margin-bottom: 0;
+}
+
 label {
   display: block;
 }
 
 .field {
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 input[type=number], input[type=text], textarea {
@@ -45,6 +50,8 @@ input[type=text], textarea {
 
 textarea {
   margin-bottom: 2em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  padding: 0.5em;
 }
 
 #occupants-number {
@@ -61,7 +68,6 @@ ol#housemates {
   list-style: none;
   padding: 0;
   counter-reset: housemate-counter;
-
 }
 
 ol#housemates li {
