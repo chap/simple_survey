@@ -77,6 +77,6 @@
 
 <p><small>
   Submitted <%= time_ago_in_words(@survey.created_at) %> ago<br />
-  Permanent link: <%= link_to short_survey_url(@survey.token) %><br />
+  Permanent link: <%= link_to short_survey_url(@survey.token), short_survey_url(@survey.token) %><br />
   <%= link_to 'Submit new answers', root_url %>
 </small></p>
