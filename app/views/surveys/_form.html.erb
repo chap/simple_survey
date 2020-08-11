@@ -58,7 +58,7 @@
     <%= form.text_area 'response[comment]', rows:3, cols:80 %>
   </div>
 
-  <%= form.hidden_field 'response[version]', value:'1' %>
+  <%= form.hidden_field 'response[version]', value:Survey.version %>
 
   <div class="actions">
     <%= form.submit 'Save and Share' %>

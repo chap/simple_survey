@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2020_07_30_135511) do
   enable_extension "plpgsql"
 
   create_table "surveys", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "token"
     t.json "response"
+    t.string "token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

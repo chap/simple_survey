@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
 
   def show
-    @survey = Survey.find(params[:id])
+    @survey = Survey.find_by!(token: params[:id])
     # {
     #   work: {
     #     outside: true/false,
@@ -44,7 +44,7 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       if @survey.save
-        format.html { redirect_to short_survey_url(@survey), notice: "Response saved. Share the URL of this page: #{short_survey_url(@survey)}" }
+        format.html { redirect_to short_survey_url(@survey.token), notice: "Response saved. Share the URL of this page: #{short_survey_url(@survey)}" }
         format.json { render :show, status: :created, location: @survey }
       else
         format.html { render :new }
