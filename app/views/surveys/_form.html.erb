@@ -77,7 +77,7 @@
 <!-- keep outside form so it blank fields don't get submitted -->
 <template id="housemateTemplate">
   <li class="housemate">
-    activites in the last 2 weeks:
+    activites since <%= 2.weeks.ago.strftime("%B %-d") %>:
     <div class="details" style="margin:0;margin-bottom:1em;">
       <label>
         <%= @fform.check_box 'response[housemates][][work_school]'%> work or school outside the home

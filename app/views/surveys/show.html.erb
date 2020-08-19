@@ -42,30 +42,34 @@
   </li>
 
   <li>
-    I live with <%= pluralize(@survey.response['housemates'].count, 'person') %>.
+    I lived with <%= pluralize(@survey.response['housemates'].count, 'person') %>.
   </li>
 
-  <% (1..@survey.response['housemates'].count).to_a.each do |i| %>
-    <% housemate = @survey.response['housemates'][(i-1)] %>
-    <li>
-      <% if @survey.response['housemates'].count == 1 %>
+  <% if @survey.response['housemates'].count > 1 && @survey.housemates_nothing? %>
+    <li>None of them worked, attended school, shopped, or ate outside the home.</li>
+  <% else %>
+    <% (1..@survey.response['housemates'].count).to_a.each do |i| %>
+      <% housemate = @survey.response['housemates'][(i-1)] %>
+      <li>
+        <% if @survey.response['housemates'].count == 1 %>
+          They
+        <% else %>
+          The <%= i.ordinalize %>
+        <% end %>
+        <% if housemate['work_school'] == '1' %>
+          worked or attended school outside the home.
+        <% else %>
+          did not work or attend school outside the home.
+        <% end %>
         They
-      <% else %>
-        The <%= i.ordinalize %>
-      <% end %>
-      <% if housemate['work_school'] == '1' %>
-        worked or attended school outside the home.
-      <% else %>
-        did not work or attend school outside the home.
-      <% end %>
-      They
-      <% if housemate['shop_eat'] == '1' %>
-        shopped or ate out.
-      <% else %>
-        did not shop or eat out.
-      <% end %>
-      <%= housemate['comment'] %>
-    </li>
+        <% if housemate['shop_eat'] == '1' %>
+          shopped or ate out.
+        <% else %>
+          did not shop or eat out.
+        <% end %>
+        <%= housemate['comment'] %>
+      </li>
+    <% end %>
   <% end %>
 
   <% if @survey.response['comment'].present? %>

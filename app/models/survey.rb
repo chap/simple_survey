@@ -5,6 +5,12 @@ class Survey < ApplicationRecord
     "v1"
   end
 
+  def housemates_nothing?
+    work_school = response['housemates'].collect(&:values)
+    shop_eat = response['housemates'].collect(&:values)
+    (work_school + shop_eat).flatten.select {|i| i != '' && i != '0' }.empty?
+  end
+
   protected
 
   def generate_token
