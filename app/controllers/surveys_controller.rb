@@ -1,36 +1,8 @@
 class SurveysController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def show
     @survey = Survey.find_by!(token: params[:id])
-    # {
-    #   work: {
-    #     outside: true/false,
-    #     mask: true/false,
-    #     comments: ''
-    #   },
-    #   shop: {
-    #     outside: true/false,
-    #     mask: true/false,
-    #     comments: ''
-    #   },
-    #   eat: {
-    #     outside: true/false,
-    #     mask: true/false,
-    #     comments: ''
-    #   },
-    #   housemates: [
-    #     work: {
-    #       outside: true/false,
-    #       mask: true/false
-    #     },
-    #     shop_eat: {
-    #       outside: true/false,
-    #       mask: true/false
-    #     },
-    #     comments: ''
-    #   ],
-    #   household_comments: ''
-    # }
   end
 
   # GET /surveys/new
