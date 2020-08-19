@@ -2,7 +2,7 @@
 
 <%# @survey.response %>
 
-<h4>From <%= (@survey.created_at - 2.weeks).strftime("%B %d") %> &mdash; <%= @survey.created_at.strftime("%B %d") %>...</h4>
+<h4>From <%= (@survey.created_at - 2.weeks).strftime("%B %-d") %> &mdash; <%= @survey.created_at.strftime("%B %-d") %>...</h4>
 
 <ul>
   <li>
