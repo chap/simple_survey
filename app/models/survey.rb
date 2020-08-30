@@ -18,7 +18,8 @@ class Survey < ApplicationRecord
     self.token = SecureRandom.urlsafe_base64(i)
     if Survey.exists?(token: self.token)
       i += 1
-      generate_token 
+      generate_token
+    end
   end
 
 
