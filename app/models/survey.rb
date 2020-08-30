@@ -14,8 +14,11 @@ class Survey < ApplicationRecord
   protected
 
   def generate_token
-    self.token = SecureRandom.urlsafe_base64(6)
-    generate_token if Survey.exists?(token: self.token)
+    i = 4
+    self.token = SecureRandom.urlsafe_base64(i)
+    if Survey.exists?(token: self.token)
+      i += 1
+      generate_token 
   end
 
 
