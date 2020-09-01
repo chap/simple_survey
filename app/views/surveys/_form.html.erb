@@ -1,62 +1,76 @@
 <%= form_with(model: survey, local: true) do |form| %>
 
-  <h4>In the past 2 weeks (since <%= 2.weeks.ago.strftime("%B %-d") %>) I have...</h4>
-  <div class="field" data-controller="activity">
-    <label>
-      <%= form.check_box 'response[work][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
-      worked or attend school outside my home
-    </label>
-    <div class="field details" data-target="activity.outsideDetails" style="display:none;">
-      <label>
-        <%= form.check_box 'response[work][mask]'%>
-        I wore a mask 100% of the time
-      </label>
-      <%= form.text_field 'response[work][comment]', placeholder: 'optionally share more details here' %>
-    </div>
-  </div>
+  <h4>In the past 2 weeks (since <%= 2.weeks.ago.strftime("%B") %> <%= 2.weeks.ago.day.ordinalize %>)</h4>
+  <ol class="questions">
+    <li class="field active" data-controller="activity">
+      <div class="container">
+        <label>
+          <%= form.hidden_field 'response[work][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
+          I worked or attended school outside my home
+        </label>
+        <button class="no">No</button>
+        <button class="yes">Yes</button>
+        <div class="field details" data-target="activity.outsideDetails" style="display:none;">
+          <label>
+            <%= form.check_box 'response[work][mask]'%>
+            I wore a mask 100% of the time
+          </label>
+          <%= form.text_field 'response[work][comment]', placeholder: 'optionally share more details here' %>
+        </div>
+      </div>
+    </li>
 
-  <div class="field" data-controller="activity">
-    <label>
-      <%= form.check_box 'response[shop][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
-      shopped at the grocery or inside other stores
-    </label>
-    <div class="field details" data-target="activity.outsideDetails" style="display:none;">
-      <label>
-        <%= form.check_box 'response[shop][mask]'%>
-        I wore a mask 100% of the time
-      </label>
-      <%= form.text_field 'response[shop][comment]', placeholder: 'optionally share more details here' %>
-    </div>
-  </div>
+    <li class="field" data-controller="activity">
+      <div class="container">
+        <label>
+          <%= form.check_box 'response[shop][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
+          shopped at the grocery or inside other stores
+        </label>
+        <div class="field details" data-target="activity.outsideDetails" style="display:none;">
+          <label>
+            <%= form.check_box 'response[shop][mask]'%>
+            I wore a mask 100% of the time
+          </label>
+          <%= form.text_field 'response[shop][comment]', placeholder: 'optionally share more details here' %>
+        </div>
+      </div>
+    </li>
 
-  <div class="field" data-controller="activity">
-    <label>
-      <%= form.check_box 'response[eat][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
-      eaten at a restauraunt
-    </label>
-    <div class="field details" data-target="activity.outsideDetails" style="display:none;">
-      <label>
-        <%= form.check_box 'response[eat][mask]'%>
-        I wore a mask when away from my table
-      </label>
-      <%= form.text_field 'response[eat][comment]', placeholder: 'optionally share more details here' %>
-    </div>
-  </div>
+    <li class="field" data-controller="activity">
+      <div class="container">
+        <label>
+          <%= form.check_box 'response[eat][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
+          eaten at a restauraunt
+        </label>
+        <div class="field details" data-target="activity.outsideDetails" style="display:none;">
+          <label>
+            <%= form.check_box 'response[eat][mask]'%>
+            I wore a mask when away from my table
+          </label>
+          <%= form.text_field 'response[eat][comment]', placeholder: 'optionally share more details here' %>
+        </div>
+      </div>
+    </li>
 
 
-  <div class="field" data-controller="occupants">
-    <label>How many people do you live with?</label>
-    <input type="number" min="0" max="20" value="0" id="occupants-number" data-target="occupants.number" data-action="occupants#updateNumber">
-    <input type="range" min="0" max="10" value="0" id="occupants-slider" data-target="occupants.slider" data-action="input->occupants#slide">
-  </div>
+    <li class="field" data-controller="occupants">
+      <div class="container">
+        <label>How many people do you live with?</label>
+        <input type="number" min="0" max="20" value="0" id="occupants-number" data-target="occupants.number" data-action="occupants#updateNumber">
+        <input type="range" min="0" max="10" value="0" id="occupants-slider" data-target="occupants.slider" data-action="input->occupants#slide">
+      </div>
+    </li>
 
-  <ol id="housemates">
+    <ol id="housemates">
+    </ol>
+
+    <li class="field">
+      <div class="container">
+        <label>Other testing, travel, activities or considerations for your household?</label>
+        <%= form.text_area 'response[comment]', rows:3, cols:80 %>
+      </div>
+    </li>
   </ol>
-
-  <div class="field">
-    <label>Other testing, travel, activities or considerations for your household?</label>
-    <%= form.text_area 'response[comment]', rows:3, cols:80 %>
-  </div>
 
   <%= form.hidden_field 'response[version]', value:Survey.version %>
 

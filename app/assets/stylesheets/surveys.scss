@@ -5,7 +5,20 @@
 h1 {
   margin-bottom: 0;
   padding-bottom: 0;
-  font-size: 2em;
+  font-size: 1rem;
+  line-height: 1em;
+  color: #999;
+  font-weight: bold;
+  display: inline;
+}
+
+header {
+  border-bottom: 2px solid #999;
+}
+
+header a {
+  color: #999;
+text-decoration: none;
 }
 
 h2 {
@@ -14,19 +27,84 @@ h2 {
   padding: 0;
   font-weight: normal;
   font-size: 1rem;
+  color: #999;
+  display: inline;
 }
 
 h4 {
+  font-size: 1rem;
   margin-bottom: 0;
+  font-weight: normal;
+}
+
+button {
+  font-size: 1rem;
+  padding: 1rem;
+  width: 40%;
+  border: 1px solid #999;
+  border-radius: .5rem;
+
+}
+
+button.no {
+  background-color: #fff;
+  margin-right: 2rem;
 }
 
 label {
   display: block;
 }
 
-.field {
-  margin-bottom: 0.5em;
+// hide all questions
+.field .container, .actions{
+  display:none;
 }
+// show first question
+.questions .field:first-child .container {
+  display: block;
+}
+
+ol.questions {
+  list-style-type: none;
+  margin-top: 0;
+}
+
+.questions li::before {
+  content: "\✺";
+  content: "\✴";
+  content: "\✲";
+  float:left;
+  margin-right: 1rem;
+  margin-left: -2rem;
+  font-size: 1rem;
+  border: 1px solid red;
+  position: absolute;
+  left: 0;
+}
+
+.questions li.active {
+  display:block;
+}
+
+.questions li.active::before {
+  content: "\✱";
+  font-size: 2rem;
+    top: 1rem;
+    margin-right: 2rem;
+}
+
+.questions li {
+  clear: both;
+  display: block;
+  position: relative;
+}
+
+.questions li .container {
+  display: none;
+  vertical-align: middle;
+
+}
+
 
 input[type=number], input[type=text], textarea {
   font-size: 1em;
