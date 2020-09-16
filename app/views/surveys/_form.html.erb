@@ -1,6 +1,10 @@
 <%= form_with(model: survey, local: true) do |form| %>
 
-  <h4>In the past 2 weeks (since <span id="startdate"><%= 2.weeks.ago.strftime("%b") %> <%= 2.weeks.ago.day.ordinalize %></span>) I have...</h4>
+  <h4>
+    In the past 2 weeks 
+    (since <span id="startdate"><%= 2.weeks.ago.strftime("%b") %> <%= 2.weeks.ago.day.ordinalize %></span>)
+    I have&hellip;
+  </h4>
   <div class="field" data-controller="activity">
     <label>
       <%= form.check_box 'response[work][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
