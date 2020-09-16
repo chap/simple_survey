@@ -42,7 +42,11 @@
   </li>
 
   <li>
-    I lived with <%= pluralize(@survey.response['housemates'].count, 'person') %>.
+    <% if @survey.response['housemates'].count == 0 %>
+      I lived alone.
+    <% else %>
+      I lived with <%= pluralize(@survey.response['housemates'].count, 'person') %>.
+    <% end %>
   </li>
 
   <% if @survey.response['housemates'].count > 1 && @survey.housemates_nothing? %>
@@ -79,8 +83,10 @@
   <% end %>
 </ul>
 
-<p><small>
-  Submitted <%= time_ago_in_words(@survey.created_at) %> ago<br />
-  Permanent link: <%= link_to short_survey_url(@survey.token), short_survey_url(@survey.token) %><br />
+<footer>
+  <p>
+    Submitted <%= time_ago_in_words(@survey.created_at) %> ago<br />
+    Permanent link: <%= link_to short_survey_url(@survey.token), short_survey_url(@survey.token) %>
+  </p>
   <%= link_to 'Submit new answers', root_url %>
-</small></p>
+</footer>
