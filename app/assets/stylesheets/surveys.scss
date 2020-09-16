@@ -56,7 +56,19 @@ input[type=range] {
 input[type=submit] {
   padding: 0.5em;
   font-size: 1em;
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+input[type=submit]:hover {
+  background-color: #ddd;
+}
+
+input[type=submit]:active {
+  background-color: #999;
+  color: #fff;
 }
 
 input[type=text], textarea {
@@ -75,9 +87,10 @@ textarea {
 }
 
 .details {
-  // margin-left: 1em;
   padding: .5em;
   background: #eee;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 ol#housemates {
