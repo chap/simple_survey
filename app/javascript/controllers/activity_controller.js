@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["outside", "outsideDetails"]
 
   connect() {
-    console.log("Activity Stimulus loaded")
+    // console.log("Activity Stimulus loaded")
   }
 
   outsideChange() {

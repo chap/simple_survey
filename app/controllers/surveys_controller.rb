@@ -11,7 +11,17 @@ class SurveysController < ApplicationController
   end
 
   def create
-    params[:survey][:response][:housemates] = [] if params[:survey][:response][:housemates].nil?
+    # puts "request.raw_post=#{request.raw_post}"
+    
+    # ensure there's a an empty array for housemates 
+    if params[:survey][:response][:housemates].nil?
+      params[:survey][:response][:housemates] = [] 
+    else
+      # convert housemates hash to array
+      # {'1' => {values1}, '2' => {values2}} >>>> [{values1}, {values2}]
+      params[:survey][:response][:housemates] = params[:survey][:response][:housemates].values
+    end
+
     @survey = Survey.new(response: params[:survey][:response])
 
     respond_to do |format|

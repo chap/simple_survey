@@ -5,7 +5,7 @@ export default class extends Controller {
 
   connect() {
     // this.outputTarget.textContent = 'Hello, Stimulus!'
-    console.log("Opportunity Stimulus loaded")
+    // console.log("Opportunity Stimulus loaded")
   }
 
   slide() {
@@ -33,24 +33,41 @@ export default class extends Controller {
     } else if (diff < 0) {
       // need to add
       do {
-        this.insertHousemate();
+        this.insertHousemate(housemates.length);
         diff++;
       } while (diff < 0)
     }
   }
 
-  insertHousemate() {
-    // Instantiate the table with the existing HTML tbody
-    // and the row with the template
+  insertHousemate(index) {
     let list = document.querySelector('#housemates');
-    var template = document.querySelector('#housemateTemplate');
 
-    // Clone the new row and insert it into the table
-    var clone = template.content.cloneNode(true);
-    // var td = clone.querySelectorAll("td");
-    // td[0].textContent = "1235646565";
-    // td[1].textContent = "Stuff";
+    // the template approach causes problems
+    // specifically when varitying the number of housemates after answering questions
+    // var template = document.querySelector('#housemateTemplate');
+    // var clone = template.content.cloneNode(true);
+    // list.appendChild(clone);
 
-    list.appendChild(clone);
+    let startdate = document.querySelector('#startdate').textContent;
+
+    let clone = `
+    <li class="housemate">
+    activites since ${startdate}:
+    <div class="details" style="margin:0;margin-bottom:1em;">
+      <label>
+        <input name="survey[response[housemates][${index}][work_school]]" type="hidden" value="0">
+        <input type="checkbox" value="1" name="survey[response[housemates][${index}][work_school]]" id="survey_response[housemates][][work_school]"> work or school outside the home
+      </label>
+      <label>
+        <input name="survey[response[housemates][${index}][shop_eat]]" type="hidden" value="0">
+        <input type="checkbox" value="1" name="survey[response[housemates][${index}][shop_eat]]" id="survey_response[housemates][][shop_eat]"> shopping or eating out
+      </label>
+      <input placeholder="more details on this person" type="text" name="survey[response[housemates][${index}][comment]]" id="survey_response[housemates][][comment]">
+    </div>
+  </li>
+  `;
+
+  list.insertAdjacentHTML('beforeend', clone);
+    
   }
 }
