@@ -48,10 +48,10 @@
   </div>
 
 
-  <div class="field" data-controller="occupants">
+  <div class="field" data-controller="housemates">
     <label>How many people do you live with?</label>
-    <input type="number" min="0" max="20" value="0" id="occupants-number" data-target="occupants.number" data-action="occupants#updateNumber">
-    <input type="range" min="0" max="10" value="0" id="occupants-slider" data-target="occupants.slider" data-action="input->occupants#slide">
+    <input type="number" min="0" max="20" value="0" id="housemates-number" data-target="housemates.number" data-action="housemates#updateNumber">
+    <input type="range" min="0" max="10" value="0" id="housemates-slider" data-target="housemates.slider" data-action="input->housemates#slide">
   </div>
 
   <ol id="housemates">
@@ -70,27 +70,25 @@
 
 
 <%
-  # hack to render household fields outside of form element
+  # hack to render housemate fields outside of form element
   # otherwise template fields will get submitted with the form
   @fform = form
 
-  # end form
   end
 %>
 
 <!-- keep outside form so blank fields don't get submitted -->
-<!-- <template id="housemateTemplate">
+<template id="housemateTemplate">
   <li class="housemate">
     activites since <%= 2.weeks.ago.strftime("%b %-d") %>:
     <div class="details">
       <label>
-        <%= @fform.check_box 'response[housemates][][work_school]'%> work or school outside the home
+        <%= @fform.check_box 'response[housemates][housemate_index][work_school]'%> work or school outside the home
       </label>
       <label>
-        <%= @fform.check_box 'response[housemates][][shop_eat]'%> shopping or eating out
+        <%= @fform.check_box 'response[housemates][housemate_index][shop_eat]'%> shopping or eating out
       </label>
-      <%= @fform.text_field 'response[housemates][][comment]', placeholder: 'more details on this person' %>
+      <%= @fform.text_field 'response[housemates][housemate_index][comment]', placeholder: 'more details on this person' %>
     </div>
   </li>
 </template>
--->
