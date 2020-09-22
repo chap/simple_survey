@@ -18,9 +18,11 @@
   <li>
     <% if @survey.response['work']['outside'] == '1' %>
       I <b>did</b> work or attended school outside the home.
-      <% if @survey.response['work']['mask'] == '1' %>
-        I wore a mask 100% of the time.
-      <% end %>
+      I <% if @survey.response['work']['mask'] == '1' %>
+        wore
+      <% else %>
+        <b>did not</b> wear
+      <% end %> a mask 100% of the time.
       <i><%= @survey.response['work']['comment'] if @survey.response['work']['comment'].present? %></i>
     <% else %>
       I did not work or attend school outside the home.
@@ -30,9 +32,11 @@
   <li>
     <% if @survey.response['shop']['outside'] == '1' %>
       I <b>did</b> shop at the grocery or inside other stores.
-      <% if @survey.response['work']['mask'] == '1' %>
-        I wore a mask 100% of the time.
-      <% end %>
+      I <% if @survey.response['shop']['mask'] == '1' %>
+        wore
+      <% else %>
+        <b>did not</b> wear
+      <% end %> a mask 100% of the time.
       <i><%= @survey.response['shop']['comment'] if @survey.response['work']['comment'].present? %></i>
     <% else %>
       I did not shop at the grocery or inside other stores.
@@ -42,9 +46,11 @@
   <li>
     <% if @survey.response['eat']['outside'] == '1' %>
       I <b>did</b> eat at a restauraunt.
-      <% if @survey.response['eat']['mask'] == '1' %>
-        I wore a mask when away from my table.
-      <% end %>
+      I <% if @survey.response['eat']['mask'] == '1' %>
+        wore
+      <% else %>
+        <b>did not</b> wear
+      <% end %> a mask when away from my table.
       <i><%= @survey.response['eat']['comment'] %></i>
     <% else %>
       I did not eat at restauraunts.

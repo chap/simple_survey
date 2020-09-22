@@ -47,7 +47,7 @@ export default class extends Controller {
 
     list.insertAdjacentHTML('beforeend', conedFieldsWithIndex);
     // force browser reflow so css transition doesn't get clobbered
-    window.getComputedStyle(list, null).getPropertyValue("color");
+    window.getComputedStyle(list.querySelector('.housemate .details'), null).getPropertyValue("color");
     list.querySelectorAll('.housemate .details').forEach(housemate => housemate.classList.add('show'));
   }
 }
