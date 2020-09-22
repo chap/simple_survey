@@ -17,6 +17,21 @@
       <h2>share your precautions</h2>
     </header>
 
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
+
+    <% if @survey.persisted? %>
+      <footer>
+        <p>
+          Submitted <%= time_ago_in_words(@survey.created_at) %> ago<br />
+          Permanent link: <%= link_to short_survey_url(@survey.token), short_survey_url(@survey.token) %>
+        </p>
+        <%= link_to 'Submit new answers', root_url, class: 'btn' %>
+        <p class="credit">
+          made by <%= link_to 'chap', 'http://chapambrose.com' %>
+        </p>
+      </footer>
+    <% end %>
   </body>
 </html>

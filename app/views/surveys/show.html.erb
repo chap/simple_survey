@@ -3,8 +3,8 @@
 <%# @survey.response %>
 
 <h4>
-  Between 
-  <%= (@survey.created_at - 2.weeks).strftime("%B %-d") %> &mdash; 
+  Between
+  <%= (@survey.created_at - 2.weeks).strftime("%B %-d") %> &mdash;
   <% if (@survey.created_at - 2.weeks).month == @survey.created_at.month %>
     <%= @survey.created_at.strftime("%-d") %>&hellip;
   <% else %>
@@ -12,7 +12,7 @@
   <% end %>
 </h4>
 
-<ul>
+<ul class="survey-show">
   <li>
     <% if @survey.response['work']['outside'] == '1' %>
       I worked or attended school outside the home.
@@ -90,11 +90,3 @@
     </li>
   <% end %>
 </ul>
-
-<footer>
-  <p>
-    Submitted <%= time_ago_in_words(@survey.created_at) %> ago<br />
-    Permanent link: <%= link_to short_survey_url(@survey.token), short_survey_url(@survey.token) %>
-  </p>
-  <%= link_to 'Submit new answers', root_url %>
-</footer>

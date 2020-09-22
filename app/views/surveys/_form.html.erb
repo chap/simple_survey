@@ -1,7 +1,7 @@
-<%= form_with(model: survey, local: true) do |form| %>
+<%= form_with(model: survey) do |form| %>
 
   <h4>
-    In the past 2 weeks 
+    In the past 2 weeks
     (since <span id="startdate"><%= 2.weeks.ago.strftime("%b") %> <%= 2.weeks.ago.day.ordinalize %></span>)
     I have&hellip;
   </h4>
@@ -22,7 +22,7 @@
   <div class="field" data-controller="activity">
     <label>
       <%= form.check_box 'response[shop][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
-      shopped at the grocery or inside other stores
+      shopped inside grocery or other stores
     </label>
     <div class="field details" data-target="activity.outsideDetails" style="display:none;">
       <label>
@@ -65,7 +65,7 @@
   <%= form.hidden_field 'response[version]', value:Survey.version %>
 
   <div class="actions">
-    <%= form.submit 'Save and Share' %>
+    <%= form.submit 'Save and Share', class: 'btn' %>
   </div>
 
 
