@@ -135,11 +135,6 @@ ol#housemates li::before {
 .actions {
   text-align: center;
 }
-@media only screen and (max-width: 600px) {
-  .actions {
-    text-align: left;
-  }
-}
 
 ul.survey-show {
   margin: 0;
@@ -155,11 +150,6 @@ footer {
   color: #999;
   border-top: 1px solid #ccc;
   margin-bottom:1em;
-}
-@media only screen and (max-width: 600px) {
-  footer {
-    text-align: left;
-  }
 }
 
 footer p {
