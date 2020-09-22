@@ -22,7 +22,7 @@ header a {
   text-decoration: none;
 }
 
-h2 {
+header h2 {
   font-size: 1rem;
   margin: 0;
   margin-bottom: 1rem;
@@ -32,8 +32,41 @@ h2 {
   display: inline;
 }
 
-h4 {
-  // margin-bottom: 0;
+header a.about {
+  float: right;
+  font-size: 1rem;
+}
+
+header p {
+  font-size: 1rem;
+}
+
+div.about {
+  line-height: 1.5em;
+}
+
+.slideUp {
+  transition: visibility 0s, opacity 0.5s ease;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  display: block;
+}
+
+.slideUp p {
+  margin:0;
+
+}
+
+.slideUp.open {
+  height: auto;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+.slideUp.open p {
+  // line-height: 1.5em;
+  margin-bottom: 1em;
 }
 
 label {
@@ -58,9 +91,10 @@ input[type=range] {
   padding: .7em 1.5em;
   font-size: 1em;
   margin-bottom: 2em;
-  border: 1px solid #999;
-  border-radius: 2em;
+  border: 1px solid #d92d21;
+  border-radius: 60px;
   background-color: #999;
+  background-image: linear-gradient(to top, #a94bb9, #9b46b7, #8d42b5, #7d3eb2, #6d3ab0);
   color: #fff;
   font-weight: normal;
   text-decoration: none;
@@ -68,6 +102,9 @@ input[type=range] {
 
 .btn:hover {
   background-color: #666;
+  border-color: #eb4f12;
+  background-image: linear-gradient(to top, #a94bb9, #9b46b7);
+  cursor: pointer;
 }
 
 .btn:active, footer .btn:active {
@@ -77,12 +114,14 @@ input[type=range] {
 
 footer .btn {
   background: transparent;
-  color: #999;
+  color: #888;
+  border-color: #999;
+  font-size: 1rem;
 }
 
 footer .btn:hover {
-  background-color: #ccc;
-  border-color: #ccc;
+  background: #eee;
+  border-color: #eee;
   color: #222;
   // color: #999;
 }
@@ -103,14 +142,31 @@ textarea {
 }
 
 .details {
-  padding: 1em;
-  padding-top: .5em;
   background: #eee;
   border-top: 1px solid #ccc;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   margin-bottom: 1.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+
+  // display: none;
+  transition: visibility 0s, opacity 0.5s ease;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
 }
+
+.details.show {
+  height: auto;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  padding-bottom: 1em;
+  padding-top: .5em;
+}
+
+
 
 ol#housemates {
   list-style: none;

@@ -10,7 +10,7 @@
       <%= form.check_box 'response[work][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
       worked or attend school outside my home
     </label>
-    <div class="field details" data-target="activity.outsideDetails" style="display:none;">
+    <div class="field details" data-target="activity.outsideDetails">
       <label>
         <%= form.check_box 'response[work][mask]'%>
         I wore a mask 100% of the time
@@ -24,7 +24,7 @@
       <%= form.check_box 'response[shop][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
       shopped inside grocery or other stores
     </label>
-    <div class="field details" data-target="activity.outsideDetails" style="display:none;">
+    <div class="field details" data-target="activity.outsideDetails">
       <label>
         <%= form.check_box 'response[shop][mask]'%>
         I wore a mask 100% of the time
@@ -38,7 +38,7 @@
       <%= form.check_box 'response[eat][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
       eaten at a restauraunt
     </label>
-    <div class="field details" data-target="activity.outsideDetails" style="display:none;">
+    <div class="field details" data-target="activity.outsideDetails">
       <label>
         <%= form.check_box 'response[eat][mask]'%>
         I wore a mask when away from my table

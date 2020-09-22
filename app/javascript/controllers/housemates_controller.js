@@ -46,5 +46,8 @@ export default class extends Controller {
     const conedFieldsWithIndex = clonedFields.replace(/housemate_index/g, index);
 
     list.insertAdjacentHTML('beforeend', conedFieldsWithIndex);
+    // force browser reflow so css transition doesn't get clobbered
+    window.getComputedStyle(list, null).getPropertyValue("color");
+    list.querySelectorAll('.housemate .details').forEach(housemate => housemate.classList.add('show'));
   }
 }

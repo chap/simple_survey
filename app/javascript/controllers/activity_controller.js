@@ -9,9 +9,9 @@ export default class extends Controller {
 
   outsideChange() {
     if(this.outsideTarget.checked) {
-      this.outsideDetailsTarget.style.display = 'block';
+      this.outsideDetailsTarget.classList.add('show');
     } else {
-      this.outsideDetailsTarget.style.display = 'none';
+      this.outsideDetailsTarget.classList.remove('show');
     }
   }
 }

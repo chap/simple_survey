@@ -8,13 +8,29 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="turbolinks-cache-control" content="no-cache">
+    <script type="text/javascript">
 
+    </script>
   </head>
 
   <body>
     <header>
       <h1><%= link_to 'covidQ.org', root_url %></h1>
       <h2>share your precautions</h2>
+
+      <%= link_to 'about', '#', class:'about', onclick:"document.querySelector('div.about').classList.toggle('open');return false;" %>
+
+      <div class="about slideUp">
+        <p>&nbsp;</p>
+        <p>This website is a simple way to share or ask people about their COVID-19 precautions.</p>
+        <p>After submitting you'll be given a permanent, unique URL that can be used to share answers.</p>
+        <p>This site is anonymous, does not use cookies, and does not store any details about visitors.</p>
+        <p style="text-align:center;">
+          <span style="font-size:2em">🤗😷🤠</span><br />
+          made by <%= link_to 'Chap', 'http://chapambrose.com' %>
+        </p>
+      </div>
     </header>
 
     <main>
@@ -28,9 +44,6 @@
           Permanent link: <%= link_to short_survey_url(@survey.token), short_survey_url(@survey.token) %>
         </p>
         <%= link_to 'Submit new answers', root_url, class: 'btn' %>
-        <p class="credit">
-          made by <%= link_to 'chap', 'http://chapambrose.com' %>
-        </p>
       </footer>
     <% end %>
   </body>
