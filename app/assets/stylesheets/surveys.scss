@@ -77,6 +77,10 @@ label {
   margin-bottom: 1em;
 }
 
+input[type=number] {
+  max-width: 5em;
+}
+
 input[type=number], input[type=text], textarea {
   font-size: 1em;
   padding: .25em;
