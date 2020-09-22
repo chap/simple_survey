@@ -22,7 +22,7 @@
   <div class="field" data-controller="activity">
     <label>
       <%= form.check_box 'response[shop][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
-      shopped inside grocery or other stores
+      shopped inside a grocery or other store
     </label>
     <div class="field details" data-target="activity.outsideDetails">
       <label>
@@ -41,7 +41,7 @@
     <div class="field details" data-target="activity.outsideDetails">
       <label>
         <%= form.check_box 'response[eat][mask]'%>
-        I wore a mask when away from my table
+        I wore a mask away from my table
       </label>
       <%= form.text_field 'response[eat][comment]', placeholder: 'optionally share more details here' %>
     </div>
