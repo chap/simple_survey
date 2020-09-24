@@ -17,7 +17,7 @@
 <ul class="survey-show">
   <li>
     <% if @survey.response['work']['outside'] == '1' %>
-      I <b>did</b> work or attended school outside the home.
+      I <b>did</b> work or attend school outside the home.
       I <% if @survey.response['work']['mask'] == '1' %>
         wore
       <% else %>
@@ -31,7 +31,7 @@
 
   <li>
     <% if @survey.response['shop']['outside'] == '1' %>
-      I <b>did</b> shop at the grocery or inside other stores.
+      I <b>did</b> shop at a grocery or inside other stores.
       I <% if @survey.response['shop']['mask'] == '1' %>
         wore
       <% else %>
