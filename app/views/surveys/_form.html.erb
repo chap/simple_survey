@@ -8,7 +8,7 @@
   <div class="field" data-controller="activity">
     <label>
       <%= form.check_box 'response[work][outside]', data: { action: "activity#outsideChange", target: "activity.outside"} %>
-      worked or attend school outside my home
+      worked or attended school outside my home
     </label>
     <div class="field details" data-target="activity.outsideDetails">
       <label>
@@ -80,7 +80,7 @@
 <!-- keep outside form so blank fields don't get submitted -->
 <template id="housemateTemplate">
   <li class="housemate">
-    activites since <%= 2.weeks.ago.strftime("%b %-d") %>:
+    activites since <%= 2.weeks.ago.strftime("%b") %> <%= 2.weeks.ago.day.ordinalize %>:
     <div class="details">
       <label>
         <%= @fform.check_box 'response[housemates][housemate_index][work_school]'%> work or school outside the home
